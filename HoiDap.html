@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-6.0.0-beta3-web/css/all.min.css">
+    <link rel="stylesheet" href="css/Hoidap.css">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        
+        
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+        /* Set a style for all buttons */
+        button {
+          background-color: #04AA6D;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        
+        button:hover {
+          opacity: 0.8;
+        }
+        
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+          width: auto;
+          padding: 10px 18px;
+          background-color: #f44336;
+        }
+        
+        /* Center the image and position the close button */
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+          position: relative;
+        }
+        
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+        
+        .container {
+          padding: 16px;
+        }
+        
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+        
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+          padding-top: 60px;
+        }
+        
+        /* Modal Content/Box */
+        .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+          border: 1px solid #888;
+          width: 80%; /* Could be more or less, depending on screen size */
+        }
+        
+        /* The Close Button (x) */
+        .close {
+          position: absolute;
+          right: 25px;
+          top: 0;
+          color: #000;
+          font-size: 35px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: red;
+          cursor: pointer;
+        }
+        
+        /* Add Zoom Animation */
+        .animate {
+          -webkit-animation: animatezoom 0.6s;
+          animation: animatezoom 0.6s
+        }
+        
+        @-webkit-keyframes animatezoom {
+          from {-webkit-transform: scale(0)} 
+          to {-webkit-transform: scale(1)}
+        }
+          
+        @keyframes animatezoom {
+          from {transform: scale(0)} 
+          to {transform: scale(1)}
+        }
+        
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+          span.psw {
+             display: block;
+             float: none;
+          }
+          .cancelbtn {
+             width: 100%;
+          }
+        }
+</style>
+    </style>
+    </head>
+    <body>
+        <div class="container" >
+            <header class="row ml-1">
+                <img src="image/banner.png" class="ml-auto mr-3" width="100%">
+            </header>
+            <nav class="row" >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light col" >
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item ">
+                            <a class="nav-link" href="Home.html">
+                                <i class="fas fa-home"></i>
+                                Trang chủ <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="GioiThieu.html">
+                                <i class="fas fa-list-alt"></i>
+                                Giới Thiệu</a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="LienHe.html">
+                                <i class="fas fa-phone"></i>  
+                                Liên Hệ</a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="Gopy.html">
+                                <i class="fas fa-mail-bulk"></i>Góp Ý</a>
+                            </li>
+                            <li class="nav-item active">
+                            <a class="nav-link" href="HoiDap.html">
+                                <i class="fas fa-question"></i>Hỏi Đáp</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i> Tài Khoản
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="DangNhap.html">Đăng Nhập</a>
+                                <a class="dropdown-item" href="Quenmk.html">Quên Mật Khẩu</a>
+                                <a class="dropdown-item" href="Dangky.html">Đăng Ký Thành Viên</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                <a class="dropdown-item" href="Doimk.html">Đổi Mật Khẩu</a>
+  
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </nav>
+                <section class="row">
+                    <article class="col-9" >
+                      <section class=" rgba-white-strong rounded shadow p-3">
+                        <h3 class="font-weight-bold black-text mb-4 pb-2 text-center" style="color: black; font-weight: bold;">CÂU HỎI THƯỜNG GẶP</h3>
+                        <hr class="w-header">
+                        <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Đây là những câu hỏi thường gặp. Nếu bạn có câu hỏi khác hãy liên hệ TT hỗ trợ</p>
+                    
+                        <div class="row">
+                            <div class="col-md-12 col-lg-10 mx-auto mb-5">
+                    
+                                <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                    
+                                    <div class="card border-top border-bottom-0 border-left border-right border-light">
+                    
+                                        <div class="card-header border-bottom border-light" role="tab" id="headingOne1">
+                                            <a data-toggle="collapse" data-parent="#accordionEx" href="" aria-expanded="true" aria-controls="collapseOne1">
+                                                <h5 class="black-text font-weight-normal mb-0">
+                                                    Học trực tuyến là gì? <i class="fas fa-angle-down rotate-icon"></i>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                                            <div class="card-body">
+                                                Có rất nhiều cách hiểu khác nhau về định nghĩa đào tạo online, nhưng cách hiểu cơ bản đó là một phương thức phân phối các tài liệu, nội dung học tập dựa trên các công cụ điện tử hiện đại như: điện thoại, máy tính thông qua mạng internet. Trong đó, nội
+                                                dung tài liệu học tập có thể được cập nhật từ các website trường học trực tuyến và các ứng dụng di động khác. Đặc điểm vượt trội của đào tạo qua mạng đó chính là tính tương tác cao và đa dạng giữa giảng viên và người học. Theo
+                                                tính năng đó, giảng viên và người học có thể trao đổi trực tiếp với nhau thông qua các ứng dụng: chat, email, diễn đàn, hội thảo trực tuyến,…
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card border-bottom-0 border-left border-right border-light">
+                                        <div class="card-header border-bottom border-light" role="tab" id="headingTwo2">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="" aria-expanded="false" aria-controls="collapseTwo2">
+                                                <h5 class="black-text font-weight-normal mb-0">
+                                                    Học trực tuyến: Nên hay không? <i class="fas fa-angle-down rotate-icon"></i>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div id="collapseTwo2" class="collapse show" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
+                                            <div class="card-body">
+                                                Thực tế đã nói lên một điều rằng, cho dù công nghê thông tin phát triển, các trang thiết kế web học trực tuyến trở nên phổ biến thì các trường Đại học cũng không thể bị xóa bỏ. Xã hội vẫn cần các phương thức giáo dục truyền thống để giúp các bạn trẻ trưởng
+                                                thành hơn. Tuy nhiên, xã hội cũng luôn cần các tổ chức thiết kế web dạy trực tuyến hay thiết kế phần mềm dạy học online với những khám phá và nội dung truyền đạt hiệu quả hơn. Các phương tiện trực tuyến như: mạng xã hội, các
+                                                ứng dụng online ngày càng phát triển chính vì thế, học qua mạng cũng đang là một hiệu quả của thế giới thông tin điện tử toàn cầu. Những trang web học online ra đời giúp cho học viên có thêm sự tìm kiếm thông tin, tài liệu
+                                                hữu ích.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card border-bottom-0 border-left border-right border-light">
+                    
+                                        <div class="card-header border-bottom border-light" role="tab" id="headingThree3">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="" aria-expanded="false" aria-controls="collapseThree3">
+                                                <h5 class="black-text font-weight-normal mb-0">
+                                                    Quiz là gì? <i class="fas fa-angle-down rotate-icon"></i>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div id="collapseThree3" class="collapse show" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
+                                            <div class="card-body">
+                                                Bài Quiz là một dạng bài trắc nghiệm đánh giá, bạn có thể áp dụng để tạo những bài trắc nghiệm tính cách, bài kiểm tra tự đánh giá bản thân hay bài ôn tập cho học viên. Sau khi làm xong các câu hỏi sẽ nhận được ngay lời nhận xét theo từng thang điểm mà
+                                                người làm đánh giá đạt được.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card border-left border-right border-light">
+                    
+                                        <div class="card-header border-bottom border-light" role="tab" id="headingThree4">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="" aria-expanded="false" aria-controls="collapseThree4">
+                                                <h5 class="black-text font-weight-normal mb-0">
+                                                    Phải đạt bao nhiêu điểm trong 1 bài kiểm tra? <i class="fas fa-angle-down rotate-icon"></i>
+                                                </h5>
+                                            </a>
+                                        </div>
+                    
+                                        <div id="collapseThree4" class="collapse show" role="tabpanel" aria-labelledby="headingThree4" data-parent="#accordionEx">
+                                            <div class="card-body">
+                                                Khi số câu trả lời của của bạn đúng hơn 50% tổng số câu hỏi.
+                                                <hr>
+                                                <h3 style="text-align: center;"> Trung tâm hỏi đáp FPT</h3>
+                                                <p style="text-align: center;">Mọi thắc mắc của các bạn sẽ được giải đáp bởi cái nhân viên thông tin của FPT . Mọi đóng góp của quý khách sẽ góp phần làm cho FPT phát triển hơn. Xin cảm ơn!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </article>
+                    <aside class="col-3">
+                        <div class="card mt-2">
+                            <div class="card-header" style="background-color: rgb(167, 233, 233);">
+                                <i class="fas fa-list"></i>
+                                    DANH MỤC MÔN HỌC
+                                </div>
+                                <div class="panel-body">
+                                    <a href="#" class="list-group-item">Lập trình Android nâng cao</a>
+                                    <a href="#" class="list-group-item">Xây dựng trang Web</a>
+                                    <a href="#" class="list-group-item">Cơ sỡ dữ liệu</a>
+                                    <a href="#" class="list-group-item">SQL Server</a>
+                                    <a href="#" class="list-group-item">Internet Marketing</a>
+                                    <a href="#" class="list-group-item">Lập trình hướng đối tượng với Java</a>
+                                    <a href="#" class="list-group-item">Lập trình PHP</a>
+                                    <a href="#" class="list-group-item">Điện toán đám mây</a>
+                                    <a href="#" class="list-group-item">Lập trình Android cơ bản</a>
+                                    <a href="#" class="list-group-item">Lập trình game 2D</a> 
+                                    <a href="#" class="list-group-item">Thiết kế giao diện trên Android</a>
+                                    <a href="#" class="list-group-item">Thiết kế Web cho điện thoại di động</a>
+                                    <a href="#" class="list-group-item">Lập trình ASP</a>
+                                    </div>
+                            </div>
+                        </aside>
+                  </section>
+                  <footer class="row">
+                      <div class="card col"  style="background-color: rgb(167, 233, 233);">
+                          <div class="card-body text-center" >
+                              <p>FPT Polytechnic &copy; 2020, All right reverved</p>
+                          </div>
+                      </div>
+                  </footer>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            </body>
+        </html>

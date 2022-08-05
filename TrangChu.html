@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-6.0.0-beta3-web/css/all.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="js/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="db/Subjects.js"></script>
+    <script type="text/javascript">
+        function ex(){
+            document.getElementById('tuyensinh').style.display="none";
+          }
+        var app = angular.module("myapp",[]);
+        app.controller("myCtrl",function ($scope){
+             $scope.lists = mon;
+             $scope.begin=0;
+             $scope.mon;
+             $scope.first = function() {
+                $scope.begin=0;
+             }
+             $scope.prev = function() {
+                $scope.begin -=4;
+                if ($scope.begin<0) {
+                  $scope.last();
+                }
+             }
+             $scope.next = function() {
+                $scope.begin +=4;               
+                if ($scope.begin==$scope.lists.length) {
+                  $scope.begin=0;
+                }
+             }
+             $scope.last = function() {
+               $scope.begin=$scope.lists.length-4;
+             }
+             $scope.kiemtra = function(x) {
+               if (typeof(Storage) !== "undefined") {              
+              localStorage.setItem("idmon",x);                            
+              } else {
+              alert("Xin lỗi, trình duyệt web của bạn không hỗ trợ storage..."); 
+              }  
+             } 
+                  })
+        function dangxuat() {
+          localStorage.setItem("userdn","");
+        }
+    </script>
+</head>
+
+<body ng-app="myapp" ng-controller="myCtrl">
+    <div class="container" >
+        <header class="row ml-1" style="background-color: rgb(198, 219, 228);">
+                <img src="image/banner.png" class="ml-auto mr-3" width="100%">
+        </header>
+        <nav class="row" >
+            <nav class="navbar navbar-expand-lg navbar-light bg-light col" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="Home.html">
+                          <i class="fas fa-home"></i>
+                          Trang chủ <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="GioiThieu.html">
+                          <i class="fas fa-list-alt"></i>
+                        Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="LienHe.html">
+                        <i class="fas fa-phone"></i>  
+                        Liên Hệ</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="Gopy.html">
+                          <i class="fas fa-mail-bulk"></i>Góp Ý</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="HoiDap.html">
+                        <i class="fas fa-question"></i>Hỏi Đáp</a>
+                    </li>
+                    </ul>
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-user"></i> Tài Khoản
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="DangNhap.html">Đăng Nhập</a>
+                          <a class="dropdown-item" href="Quenmk.html">Quên Mật Khẩu</a>
+                          <a class="dropdown-item" href="Dangky.html">Đăng Ký Thành Viên</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Đăng Xuất</a>
+                          <a class="dropdown-item" href="Doimk.html">Đổi Mật Khẩu</a>
+                        
+                        </div>
+                      </li>
+                  </ul>
+                </div>
+              </nav>
+        </nav>
+        <section class="row">
+            <article class="col-9">
+                <div class="card">
+                    <div class="card-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3039/3039367.png" width="30px"><strong> Danh Mục</strong>
+                    </div>
+                    <div class="card-body">
+                      <div class="container-fluid">
+                          <div class="row">
+                                <div class="col-sm-6" ng-repeat="x in lists | limitTo:4:begin">
+                                 <div class="item-in">
+                                   <a href="PHP.html" class="thumbnail">
+                                        <img src="{{x.Logo}}" class="img-thumbnail">
+                                        <button class="btn kt">Kiểm Tra</button>
+                                    </a>
+                                 </div>
+                                    <div class="caption">
+                                      <strong>{{x.Name}}</strong>                         
+                                     </div>
+                                 </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                      <div class="dieuhuong">
+                        <ul>
+                        <li class="btn" ng-click="first()"><a><img src="https://cdn-icons-png.flaticon.com/512/57/57099.png"></a></li>
+                        <li class="btn" ng-click="prev()"><a><img src="https://cdn-icons-png.flaticon.com/512/151/151846.png"></a></li>
+                        <li class="btn" ng-click="next()"><a><img src="https://cdn-icons-png.flaticon.com/512/151/151858.png"></a></li>
+                        <li class="btn" ng-click="last()"><a><img src="https://cdn-icons-png.flaticon.com/512/56/56913.png"></a></li>
+                        </ul>          
+                    </div>
+            </article>
+            <aside class="col-3">
+                <div class="poly-card mt-2">
+                  <div class="card mt-2"></div>
+                    <div class="card-header">
+                        <i class="fas fa-list"></i> 
+                        DANH MỤC MÔN HỌC
+                    </div>
+                       <ul class="list-group">
+                         <li class="list-group-item" ng-repeat=" x in lists">{{x.Name}}</li>
+                       </ul>
+                   </div>
+            </aside>
+        </section>
+        <footer class="row">
+            <div class="card col"  style="background-color: rgb(167, 233, 233);">
+                <div class="card-body text-center" >
+                    <p>FPT Polytechnic &copy; 2020, All right reverved</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

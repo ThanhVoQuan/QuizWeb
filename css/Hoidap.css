@@ -1,0 +1,82 @@
+
+.click{
+	margin-right: 5px;
+	position: relative;
+}
+.title{
+	position: relative;
+	z-index: 1;
+}
+.click:after{
+	content: "";
+    position: absolute;
+    background-color: red;
+    border-bottom:3px solid red;
+    right: 0;
+    width: 0%;
+    transition: 0.2s;
+}
+.click:hover:after{
+	left: 0;
+	border-radius: 10px;
+	width: 100%;
+}
+.navbarScroll{
+	height: 300px;
+}
+.ti{
+	background-color: black;
+	border-radius: 10px;
+}
+.item{
+	position: relative;
+}
+.item:before{
+	content: "";
+	position: absolute;
+	height: 100%;
+	border-bottom: 5px solid indianred;
+	width: 0%;
+	top: 0;
+	transition: .2s;
+}
+.item:hover:before{
+	width: 100%;
+}
+.list-group-item,.shape{
+	position: relative;
+}
+.list-group-item:before{
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 0%;
+	top: 0;
+	border-bottom: 3px solid red;
+	transition: .2s;
+}
+.list-group-item:hover:before{
+	width: 90%;
+	opacity: 0.5;
+}
+.list-group-item:hover>.shape{
+	animation-name: spin;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.shape{
+	width: 10px;
+	height: 10px;
+	background-color: #3CFF00;
+	float: right;
+	margin-top:5px;
+	transform: rotate(45deg);
+}
+@keyframes spin{
+	0%{transform: rotate(45deg);}
+	25%{background-color: #FF0000;}
+	50%{background-color: black;}
+	75%{background-color: aqua;}
+	100%{transform: rotate(405deg);}
+}

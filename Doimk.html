@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-6.0.0-beta3-web/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <style>
+         body{
+    font-family: 'Times New Roman', sans-serif;
+    
+  }
+
+.dropdown-menu {
+    margin-left: -75px;
+    margin-top: 10px;
+}
+  
+
+.registration-form {
+  margin-left: 55%;
+  margin-right: -20%
+}
+
+.registration-header {
+    text-align: center;
+}
+
+h1{
+    color: #333399;
+}
+.registration-text {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    width:100%;
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px #b3ec68;
+    
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+.signupbtn {
+    background-color: #921388;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+.signupbtn:hover {
+    opacity:1;
+  }
+
+.signupbtn {
+    float: left;
+    width: 100%;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+  }
+.registration-form {
+    padding: 16px;
+  }
+    </style>
+    </head>
+    <body ng-app="myApp">
+        <div class="container" style="background-color: azure;">
+            <header class="row ml-1">
+                <img src="image/banner.png" class="ml-auto mr-3" width="100%">
+            </header>
+            <nav class="row" >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light col" >
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                            <a class="nav-link" href="Home.html">
+                                <i class="fas fa-home"></i>
+                                Trang chủ <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="GioiThieu.html">
+                                <i class="fas fa-list-alt"></i>
+                                Giới Thiệu</a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="LienHe.html">
+                                <i class="fas fa-phone"></i>  
+                                Liên Hệ</a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="Gopy.html">
+                                <i class="fas fa-mail-bulk"></i>Góp Ý</a>
+                            </li>
+                            <li class="nav-item ">
+                            <a class="nav-link" href="HoiDap.html">
+                                <i class="fas fa-question"></i>Hỏi Đáp</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i> Tài Khoản
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="DangNhap.html">Đăng Nhập</a>
+                                <a class="dropdown-item" href="Quenmk.html">Quên Mật Khẩu</a>
+                                <a class="dropdown-item" href="Dangky.html">Đăng Ký Thành Viên</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                <a class="dropdown-item" href="Doimk.html">Đổi Mật Khẩu</a>
+                             
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </nav>
+                <section class="row">
+                      <article class="col-7"> 
+                        <div class="row">
+                        <script>
+                            var app=angular.module("myApp",[]);
+                            app.controller("myCtrl",function($scope){})
+                          </script>
+                          <form name="detrong" ng-controller="myCtrl">
+                            <div class="registration-form">
+                              <div class="registration-header">
+                                <h1>ĐỔI MẬT KHẨU</h1>
+                              </div>
+                              <hr>
+                              <div class="registration-body">
+                                <label for="mail"><b>Email</b></label>
+                                <input ng-model="mail" type="email" class="registration-text" placeholder="Email" name="mail" required>
+                                <span ng-show="detrong.mail.$error.required && detrong.mail.$touched" style="color: red;">Mời bạn nhập email</span>
+                                <span ng-show="detrong.mail.$error.email" style="color:red">Email không đúng định dạng</span>
+                                <br>
+
+                                 <label for="psw"><b>Mật khẩu</b></label>
+                                 <input ng-model="psw" type="password" class="registration-text" placeholder="Nhập mật khẩu" name="psw" required>
+                                  <span ng-show="detrong.psw.$invalid && detrong.psw.$touched" style="color: red;">Hãy nhập Password</span>
+                                 <label for="psw"><b>Mật khẩu mới</b></label>
+                                 <input ng-model="newpsw" type="password" class="registration-text" placeholder="Nhập mật khẩu mới" name="newpsw" required>
+                                 <span ng-show="detrong.newpsw.$invalid && detrong.newpsw.$touched" style="color:red">Hãy nhập mật khẩu mới!</span>
+                                 <label  for="psw"><b>Xác nhận mật khẩu</b></label>
+                                 <input ng-model="cfpsw" type="password" class="registration-text" placeholder="Xác nhận mật khẩu" name="cfpsw" required>
+                                 <span ng-show="detrong.cfpsw.$invalid && detrong.cfpsw.$touched" style="color: red;">Xác nhận mật khẩu đang trống!</span>
+                                <div class="clearfix">
+                                   <button type="submit" class="signupbtn">Up date</button>
+                                 </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                    </article>
+                    </article>
+                  </section>
+                  <footer class="row">
+                      <div class="card col"  style="background-color: rgb(167, 233, 233);">
+                          <div class="card-body text-center" >
+                              <p>FPT Polytechnic &copy; 2020, All right reverved</p>
+                          </div>
+                      </div>
+                  </footer>
+                </div>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            </body>
+        </html>

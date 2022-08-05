@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="fontawesome-free-6.0.0-beta3-web/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="db/Quizs/ADAV.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+    <div class="container" >
+        <header class="row ml-1" style="background-color: rgb(198, 219, 228);">
+                <img src="image/banner.png" class="ml-auto mr-3" width="100%">
+        </header>
+        <nav class="row" >
+            <nav class="navbar navbar-expand-lg navbar-light bg-light col" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="Home.html">
+                          <i class="fas fa-home"></i>
+                          Trang chủ <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="GioiThieu.html">
+                          <i class="fas fa-list-alt"></i>
+                        Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="LienHe.html">
+                        <i class="fas fa-phone"></i>  
+                        Liên Hệ</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="Gopy.html">
+                          <i class="fas fa-mail-bulk"></i>Góp Ý</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="HoiDap.html">
+                        <i class="fas fa-question"></i>Hỏi Đáp</a>
+                    </li>
+                    </ul>
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-user"></i> Tài Khoản
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="DangNhap.html">Đăng Nhập</a>
+                          <a class="dropdown-item" href="Quenmk.html">Quên Mật Khẩu</a>
+                          <a class="dropdown-item" href="Dangky.html">Đăng Ký Thành Viên</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Đăng Xuất</a>
+                          <a class="dropdown-item" href="Doimk.html">Đổi Mật Khẩu</a>
+                         
+                        </div>
+                      </li>
+                  </ul>
+                </div>
+              </nav>
+        </nav>
+        <script src="../DB/Quizs/ADAV.js"></script>
+      <script type="text/javascript">
+       var app = angular.module("myapp",[]);
+       app.controller("myctrl",function ($scope){           
+            $scope.quizs= quiz;           
+            $scope.start=0;
+            $scope.so=1;
+            $scope.next = function (){
+                 $scope.start++;
+                 $scope.so++;
+                 if ($scope.quizs.length==$scope.start){
+                   $scope.start=0;
+                   $scope.so=1;
+                 }                
+            } 
+            $scope.prev = function (){
+                 $scope.start--;
+                 $scope.so--
+                 if (0>$scope.start){
+                   $scope.start=$scope.quizs.length-1;
+                   $scope.so=$scope.quizs.length;
+                 }                
+            }                       
+       })
+    </script>
+        <section class="row">
+          <article class="col-sm-9" >
+            <div class="card text-center">
+              <div class="card-header"><img src="https://cdn-icons-png.flaticon.com/512/2222/2222807.png" width="30px"><strong>LẬP TRÌNH ANDROID NÂNG CAO</strong></div>
+              <div class="card-body" id="Cau1" ng-repeat="x in quizs|limitTo:1:start">
+              <h5 class="card-title">{{so}}. <span ng-bind="x.Text"></span></h5>
+              <hr>
+              <div class="form-check form-check-inline col-12" ng-repeat="z in x.Answers">            
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
+                 <label class="form-check-label">{{z.Text}}</label>            
+               </div>                                                                
+              </div>
+              <div class="card-footer text-muted">
+                MASK: 0/80
+              </div>
+            </div>
+            <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" ng-click="prev()">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" ng-click="next()">Next</a>
+        </li>
+      </ul>
+    </nav>
+           </article>
+            <aside class="col-3">
+                <div class="card mt-2">
+                    <div class="card-header" style="background-color: rgb(167, 233, 233);">
+                        <i class="fas fa-list"></i>
+                        DANH MỤC MÔN HỌC
+                    </div>
+                       <div class="panel-body">
+                            <a href="#" class="list-group-item">Lập trình Android nâng cao</a>
+                            <a href="#" class="list-group-item">Xây dựng trang Web</a>
+                            <a href="#" class="list-group-item">Cơ sỡ dữ liệu</a>
+                            <a href="#" class="list-group-item">SQL Server</a>
+                            <a href="#" class="list-group-item">Internet Marketing</a>
+                            <a href="#" class="list-group-item">Lập trình hướng đối tượng với Java</a>
+                            <a href="#" class="list-group-item">Lập trình PHP</a>
+                            <a href="#" class="list-group-item">Điện toán đám mây</a>
+                            <a href="#" class="list-group-item">Lập trình Android cơ bản</a>
+                            <a href="#" class="list-group-item">Lập trình game 2D</a> 
+                            <a href="#" class="list-group-item">Thiết kế giao diện trên Android</a>
+                            <a href="#" class="list-group-item">Thiết kế Web cho điện thoại di động</a>
+                            <a href="#" class="list-group-item">Lập trình ASP</a>
+                        </div>
+                   </div>
+            </aside>
+        </section>
+        <footer class="row">
+            <div class="card col"  style="background-color: rgb(167, 233, 233);">
+                <div class="card-body text-center" >
+                    <p>FPT Polytechnic &copy; 2020, All right reverved</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
